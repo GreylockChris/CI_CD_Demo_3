@@ -281,7 +281,7 @@
   <script>
   (function(){
     var RT = {"masscompile": {"label": "Mass Compile", "platforms": {"windows": {"wf": "masscompile-windows-container.yml", "inputs": {"commit_sha": "{sha}"}}}}, "vidiff": {"label": "VIDiff", "platforms": {"windows": {"wf": "vidiff-windows-container.yml", "inputs": {"head_sha": "{sha}", "base_sha": "{parent}"}}}}, "snapshots": {"label": "VI Snapshots", "platforms": {"all": {"wf": "vi-snapshots.yml", "inputs": {"mode": "backfill"}}}}, "unit-tests": {"label": "Unit Tests", "platforms": {"windows": {"wf": "unit-tests-windows-container.yml", "inputs": {"commit_sha": "{sha}"}}}}, "builds": {"label": "Builds", "platforms": {"windows": {"wf": "build-binaries-windows-container.yml", "inputs": {"commit_sha": "{sha}"}}}}};
-    var RT_TIMING = {"masscompile": {"windows": {"total": null, "work": null}}, "vidiff": {"windows": {"total": null, "work": null}}, "unit-tests": {"windows": {"total": null, "work": null}}, "builds": {"windows": {"total": null, "work": null}}};
+    var RT_TIMING = {"masscompile": {"windows": {"total": null, "work": null}}, "vidiff": {"windows": {"total": null, "work": null}}, "unit-tests": {"windows": {"total": 807.0, "work": null}}, "builds": {"windows": {"total": null, "work": null}}};
     var REPO = "GreylockChris/CI_CD_Demo_3";
     var BRANCH = "main";
     var TOK_KEY = "lvci_dispatch_token";
@@ -1228,7 +1228,7 @@
     // backfill) + the same token and optimistic-queued bridge as every other
     // dispatch on the dashboard.
     var HIST = [{"sha": "61731ba31c84e9d5783d4bb12cf1cd3650075106", "short": "61731ba", "msg": "Added initial code", "dep_only": false, "snapshots2": {"windows": {"have": 0, "total": 1}, "linux": {"have": 0, "total": 1}}}];                        // [{sha, short, msg}] newest-first (project revisions)
-    var RAN = {};                     // {cap:1} caps with a result/active run somewhere in history
+    var RAN = {"unit-tests": 1};                     // {cap:1} caps with a result/active run somewhere in history
     var CAP_META = {                            // label + sub for each known capability
       'snapshots':   ['VI Snapshots', 'Renders every changed VI (classic HTML snapshots)'],
       'snapshots2':  ['VI Browser 2.0 Snapshots', 'Renders position-aware snapshots for the VI Browser 2.0 view'],
@@ -2014,12 +2014,12 @@
   </script>
   <main class="lvci-main">
   <h1>CI Dashboard — CI_CD_Demo_3</h1>
-  <div class="sub">Last updated: 2026-11-12 21:19 UTC &nbsp;|&nbsp; Auto-refreshes every 15 min</div>
+  <div class="sub">Last updated: 2026-11-13 02:12 UTC &nbsp;|&nbsp; Auto-refreshes every 15 min</div>
   <div class="nav">
     <a href="https://github.com/GreylockChris/CI_CD_Demo_3">GitHub</a>
     <a href="https://github.com/GreylockChris/CI_CD_Demo_3/actions">Actions</a>
   </div>
-  <div id="lvci-backfill" class="lvci-backfill" role="region" aria-label="Run CI for existing history" style="display:none"><div class="lvci-bf-main"><div class="lvci-bf-icon" aria-hidden="true">&#9889;</div><div class="lvci-bf-text"><strong>Populate the dashboard with your history</strong><span>This dashboard has no results yet. Populate it with CI for all <b id="lvci-bf-count"></b> revisions &mdash; processed <b>oldest&nbsp;&rarr;&nbsp;newest</b> so snapshots and diffs build on one another with no duplicated work. The button opens a <a href="#" id="lvci-bf-custom" style="color:var(--link)">chooser</a> where you pick what to run &mdash; nothing starts until you confirm.</span><span class="lvci-bf-note">This repository is currently set to run up to <b>5</b> CI jobs at a time. Anything past that &mdash; or past your GitHub account&rsquo;s own concurrency limit &mdash; just waits its turn and runs in order, so it&rsquo;s safe to queue the whole history at once.</span><details class="lvci-bf-info"><summary>&#9432; How concurrency works</summary><div class="lvci-bf-infobody">GitHub caps how many CI jobs run at the same time <b>per account</b> &mdash; shared across every repository you own (for example 20 jobs on Free, 40 on Pro), not per repo. This repository adds its own limit, <b>Max concurrent runners = 5</b>, so a large history backfill paces itself instead of monopolising your account&rsquo;s runners; routine pushes and tooling updates draw from the same pool. Runs beyond the limit are queued and start automatically as earlier ones finish &mdash; nothing is lost.<a href="#" class="lvci-bf-cfg" onclick="lvciOpen(&#39;configure.html?repo=GreylockChris/CI_CD_Demo_3&#39;,&#39;Configure Pipeline&#39;);return false;">Change this for CI_CD_Demo_3 &rarr;</a></div></details></div><div class="lvci-bf-actions"><button type="button" id="lvci-bf-run" class="cidash-btn cidash-go">&#9654; Populate history&hellip;</button><button type="button" id="lvci-bf-dismiss" class="cidash-btn cidash-ghost">Dismiss</button></div></div><div id="lvci-bf-tok" class="lvci-bf-tok" style="display:none">Paste a token with <strong>Actions: Read and write</strong> on this repository &mdash; the same token you set the dashboard up with works here too, or <a id="lvci-bf-tok-link" target="_blank" rel="noopener" style="color:var(--link)">create one &#8599;</a>.<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:7px"><input id="lvci-bf-tok-input" type="password" autocomplete="off" placeholder="github_pat_&hellip; or ghp_&hellip;" style="flex:1 1 240px;min-width:180px;padding:7px 10px;background:var(--bg);color:var(--fg);border:1px solid var(--border);border-radius:6px;font-family:ui-monospace,Menlo,monospace;font-size:.8em"><button type="button" id="lvci-bf-tok-save" class="cidash-btn cidash-go">Save &amp; run</button></div></div><div id="lvci-bf-status" class="lvci-bf-status" role="status" aria-live="polite"></div></div>
+
   <div class="controls">
     <div class="cidash-search">
       <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M10.68 11.74a6 6 0 1 1 1.06-1.06l3.04 3.04a.75.75 0 1 1-1.06 1.06ZM12 7a5 5 0 1 0-10 0 5 5 0 0 0 10 0Z"/></svg>
@@ -2092,7 +2092,7 @@
       <td style="text-align:center;color:var(--fg-muted);font-size:.75em">—</td>
       <td style="text-align:center"><a href="#" class="cidash-run" data-cap="vidiff" data-sha="61731ba31c84e9d5783d4bb12cf1cd3650075106" data-parent="b3d643f4aa725f40ee2fb6c53450472325e460b1" data-short="61731ba" title="Run VIDiff for commit 61731ba">&#9655;</a></td>
       <td style="text-align:center"><a href="#" class="cidash-run" data-cap="snapshots" data-sha="61731ba31c84e9d5783d4bb12cf1cd3650075106" data-parent="b3d643f4aa725f40ee2fb6c53450472325e460b1" data-short="61731ba" title="Run VI Snapshots for commit 61731ba">&#9655;</a></td>
-      <td style="text-align:center"><a href="#" class="cidash-run" data-cap="unit-tests" data-sha="61731ba31c84e9d5783d4bb12cf1cd3650075106" data-parent="b3d643f4aa725f40ee2fb6c53450472325e460b1" data-short="61731ba" title="Run Unit Tests for commit 61731ba">&#9655;</a></td>
+      <td style="text-align:center" class="cidash-cap-cell" data-cap="unit-tests" data-sha="61731ba31c84e9d5783d4bb12cf1cd3650075106" data-parent="b3d643f4aa725f40ee2fb6c53450472325e460b1" data-short="61731ba" data-ts="2026-11-12T21:35:28Z"><span class="cidash-chip cc-pass" title="No unit tests found; 0% failed."><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L1.22 9.28a.75.75 0 1 1 1.06-1.06L6 11.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg><a href="https://GreylockChris.github.io/CI_CD_Demo_3/report/index.html?type=unit-tests-report&sha=61731ba31c84e9d5783d4bb12cf1cd3650075106&short=61731ba&src=..%2Funit-tests%2F61731ba31c84e9d5783d4bb12cf1cd3650075106%2Findex.html&title=Unit%20Tests%20%C2%B7%2061731ba" style="color:inherit">0% failed</a></span></td>
       <td style="text-align:center;color:var(--fg-muted);font-size:.75em">—</td>
       <td style="text-align:center"><a href="#" class="cidash-run" data-cap="builds" data-sha="61731ba31c84e9d5783d4bb12cf1cd3650075106" data-parent="b3d643f4aa725f40ee2fb6c53450472325e460b1" data-short="61731ba" title="Run Builds for commit 61731ba">&#9655;</a></td>
     </tr>
