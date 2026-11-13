@@ -1,0 +1,71 @@
+{
+ "meta": {
+  "sha": "07e9a854a1ee01737c07da580cef8ffc80cfd79f",
+  "short": "07e9a85",
+  "platform": "windows",
+  "repo": "GreylockChris/CI_CD_Demo_3",
+  "pages_url": "https://GreylockChris.github.io/CI_CD_Demo_3",
+  "snap_base": "https://GreylockChris.github.io/CI_CD_Demo_3/vi-snapshots/",
+  "dash_url": "https://GreylockChris.github.io/CI_CD_Demo_3/",
+  "labview_version": "2026",
+  "tools": [],
+  "commit": {
+   "message": "Merge cdf176ebf905d8ee7e15715909bf808f484f04bf into abd88c3a8707b27c48bf97c45897d2ae5607a86f",
+   "author": "Chris Roebuck",
+   "date": "2026-11-13T12:11:09Z"
+  },
+  "generated_utc": "2026-11-13 12:25 UTC"
+ },
+ "summary": {
+  "tests": 0,
+  "passed": 0,
+  "failed": 0,
+  "errored": 0,
+  "skipped": 0,
+  "percent": 0,
+  "status": "empty",
+  "duration": 0.0
+ },
+ "status_order": [
+  "failed",
+  "error",
+  "skipped",
+  "passed"
+ ],
+ "status_meta": {
+  "failed": {
+   "label": "Failed",
+   "color": "#da3633",
+   "blurb": "An assertion failed."
+  },
+  "error": {
+   "label": "Errored",
+   "color": "#bb8009",
+   "blurb": "The test raised an unexpected error."
+  },
+  "skipped": {
+   "label": "Skipped",
+   "color": "#6e7681",
+   "blurb": "The test was skipped."
+  },
+  "passed": {
+   "label": "Passed",
+   "color": "#2ea043",
+   "blurb": "The test passed."
+  }
+ },
+ "platforms": [
+  {
+   "id": "windows",
+   "url": null
+  },
+  {
+   "id": "linux",
+   "url": "linux/results.json"
+  }
+ ],
+ "suites": [],
+ "tooling": {
+  "missing": []
+ }
+}
