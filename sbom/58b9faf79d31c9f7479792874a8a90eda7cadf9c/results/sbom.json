@@ -1,0 +1,31 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
+  "bomFormat": "CycloneDX",
+  "components": [],
+  "dependencies": [
+    {
+      "ref": "pkg:vipm/Num-Search-Test-Demo"
+    }
+  ],
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:vipm/Num-Search-Test-Demo",
+      "name": "Num Search Test Demo",
+      "type": "application"
+    },
+    "timestamp": "2026-11-13T12:27:26.464Z",
+    "tools": {
+      "components": [
+        {
+          "name": "vipm-cli",
+          "publisher": "JKI",
+          "type": "application",
+          "version": "2026.3.0"
+        }
+      ]
+    }
+  },
+  "serialNumber": "urn:uuid:e96db4ce-f938-4e9b-a357-b14882bbeb1e",
+  "specVersion": "1.5",
+  "version": 1
+}
