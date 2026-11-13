@@ -1,0 +1,12 @@
+{
+    "repo":  "GreylockChris/CI_CD_Demo_3",
+    "sha":  "07e9a854a1ee01737c07da580cef8ffc80cfd79f",
+    "ref":  "refs/pull/2/merge",
+    "platform":  "windows",
+    "arch":  "AMD64",
+    "labview_version":  "LabVIEW 2026",
+    "built_at":  "2026-11-13T12:26:29Z",
+    "specs":  [
+
+              ]
+}
